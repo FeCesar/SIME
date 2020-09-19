@@ -1,0 +1,63 @@
+@media(min-width:320px){
+    .footer{
+        bottom: 0;
+        background-color: #343a40;
+        width: 100%;
+    }
+}
+/* MEDIA 768px*/
+@media(min-width: 768px){
+    .footer{
+        position: absolute;
+    }
+}
+.footer ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.footer ul a{
+    text-decoration: none;
+}
+.footer ul li{
+    color: #737B82;
+    transition: 0.3s;
+    display: inline-block;
+}
+.footer ul li:hover{
+    color: #EAF0F5;
+    transition: 0.3s;
+}
+
+/* main */
+table{
+    border: 1px solid black;
+    width: 100%;
+}
+table tr{
+    border: 1px solid black;
+    text-align: center;
+}
+table tr td{
+    border: 1px solid black;
+    padding: 6px;
+}
+input[type=submit]{
+    background-color: white;
+    border: 0;
+}
+/* INPUTS */
+.btn-funcao{
+    margin-top: 10px;
+    width:20px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.btn-funcao-lixeira{
+    background-image: url('../imagens/lixeira.png');
+}
+.btn-funcao-desativar{
+    background-image: url('../imagens/desativar-oficina.png');
+    margin-left: 15px;
+}
+/* TOOLTIP */
