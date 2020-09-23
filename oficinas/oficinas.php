@@ -101,6 +101,12 @@
             <p class='container' style='padding: 0; margin-bottom:0'>Erro! A Senha Inserida é Inválida!</p>
           </div>
         <?php endif; unset($_SESSION['error_senha_invalida']); ?>
+
+        <?php if(isset($_SESSION['sem_vagas'])): ?>
+          <div class="alert alert-danger container-fluid" style="font-size: 12px; display: inline-block;" role="alert">
+            <p class='container' style='padding: 0; margin-bottom:0'>Oficina está sem vagas! Talvez da Próxima.</p>
+          </div>
+        <?php endif; unset($_SESSION['sem_vagas']); ?>
       </div>
     </aside>
 

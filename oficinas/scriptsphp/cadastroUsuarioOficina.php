@@ -25,6 +25,16 @@
         header("location: ../oficinas.php?id_oficina=$id_oficina");
     }
 
+    $sql_vagas = "SELECT limite_vagas_oficina, vagas_restantes_oficina FROM oficinas WHERE id_oficina = $id_oficina";
+    $query_vagas = mysqli_query($conn, $sql_vagas);
+    $dados_vagas = mysqli_fetch_array($query_vagas);
+    $vagas = $dados_vagas[0] - $dados_vagas[1];
+
+    if($vagas == 0){
+        $_SESSION['sem_vagas'] = true;
+        header("location: ../oficinas.php?id_oficina=$id_oficina");
+    }
+
     $sql_rm_alunos = "SELECT * FROM alunos WHERE rm_aluno = $rm_aluno";
     $query_rm_alunos = mysqli_query($conn, $sql_rm_alunos);
     $dados_aluno_senha = mysqli_fetch_array($query_rm_alunos);
@@ -67,19 +77,8 @@
                     $_SESSION['sucess_cadastro'] = true;
                     header("location: ../oficinas.php?id_oficina=$id_oficina");
                 }
-    
-        if($num_linhas_query_inscricoes > 1){
-            $dados_inscricoes = mysqli_fetch_array($query_inscricoes);
-            var_dump($dados_inscricoes);
-            // $sql_oficina_inscrita = "SELECT horario_oficina FROM oficinas WHERE id_oficina = $dados_inscricoes[2]";
-            // $query_oficina_inscrita = mysqli_query($conn, $sql_oficina_inscrita);
-        }
     }else{
         $_SESSION['error_senha_invalida'] = true;
         header("location: ../oficinas.php?id_oficina=$id_oficina");
     }
-
-   
-
-
 ?>
