@@ -45,6 +45,17 @@
     </article>
 
     <main class="container">
+        <?php if(isset($_SESSION['error_inesperado'])): ?>
+          <div class="alert alert-danger container-fluid" style="font-size: 12px; display: inline-block;" role="alert">
+            <p class='container' style='padding: 0; margin-bottom:0;'>Erro Inesperado! Contate o <a href="#">Suporte</a> Para Mais Informações.</p>
+          </div>
+        <?php endif; unset($_SESSION['error_inesperado']); ?>
+        <?php if(isset($_SESSION['success_operacao'])): ?>
+          <div class="alert alert-success container-fluid" style="font-size: 12px; display: inline-block;" role="alert">
+            <p class='container' style='padding: 0; margin-bottom:0;'>Sucesso! Aluno Desinscrito na Oficina.</p>
+          </div>
+        <?php endif; unset($_SESSION['success_operacao']); ?>
+
         <h5 style="display: inline-block;"><?php echo $dados_oficina[1]; ?> - </h5>
             <h6 style="display: inline-block;">Lista de Alunos Inscritos</h6>
 
@@ -88,6 +99,7 @@
                         echo "<td>";
                         echo "<form action='scriptsphp/cancelar_inscricao.php' method='post' style='display: inline-block;'>";
                             echo "<input type='number' style='display: none;' name='id' value='$dados_alunos[0]'>";
+                            echo "<input type='number' style='display: none;' name='oficina' value='$id_oficina'>";
                             echo "<input type='submit' value='' class='btn-funcao btn-funcao-lixeira'>";
                         echo "</form>";
                         echo "</td>";
