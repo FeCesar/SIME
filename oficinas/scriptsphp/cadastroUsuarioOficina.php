@@ -33,6 +33,7 @@
     if($vagas == 0){
         $_SESSION['sem_vagas'] = true;
         header("location: ../oficinas.php?id_oficina=$id_oficina");
+        exit();
     }
 
     $sql_rm_alunos = "SELECT * FROM alunos WHERE rm_aluno = $rm_aluno";
@@ -74,6 +75,11 @@
                 } else{
                     $sql_fazer_inscricao = "INSERT INTO inscricoes(rm_aluno, id_oficina) VALUES('$rm_aluno', $id_oficina)";
                     $query_fazer_inscricao = mysqli_query($conn, $sql_fazer_inscricao);
+
+                        $contador = $dados_vagas[1] + 1;
+                        $sql_numero_inscricoes = "UPDATE oficinas SET vagas_restantes_oficina = $contador WHERE id_oficina = $id_oficina";
+                        $query_numero_inscricoes = mysqli_query($conn, $sql_numero_inscricoes);
+
                     $_SESSION['sucess_cadastro'] = true;
                     header("location: ../oficinas.php?id_oficina=$id_oficina");
                 }
