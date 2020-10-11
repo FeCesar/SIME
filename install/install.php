@@ -23,7 +23,8 @@
         hora_criacao_oficina time,
         user_criador_oficina varchar(255),
         status_oficina boolean,
-        vagas_restantes_oficina int
+        vagas_restantes_oficina int,
+        qr_code varchar(255)
     )";
 
     $sql_criar_tabela_alunos = "CREATE TABLE alunos(

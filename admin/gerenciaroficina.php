@@ -78,6 +78,7 @@
                         echo "<td>Horário</td>";
                         echo "<td>Status</td>";
                         echo "<td>Funções</td>";
+                        echo "<td>QrCode</td>";
                       echo "</tr>";
 
                   while($dados_oficinas = mysqli_fetch_array($query_sql_dados_oficinas)){
@@ -114,7 +115,11 @@
                               echo "</form>";
                           echo "</td>";
 
-                      echo "</>";
+                          echo "<td>";
+                              echo "<a href='$dados_oficinas[14]' target='_blank'><img src='imagens/qrcode.png' width='25px' height='25px'></a>";
+                          echo "</td>";
+
+                      echo "</tr>";
                   };
               };
           
