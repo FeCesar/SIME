@@ -35,7 +35,7 @@
 
     <main class="container">
       <?php
-        if($dados_oficina[12] == 0){
+        if($dados_oficina[11] == 0){
           echo "<div class='alert alert-warning container-fluid' style='font-size: 12px; display: inline-block;' role='alert'>
                   <p class='container' style='padding: 0; margin-bottom:0;'>Oficina Desativada</p>
                 </div>";
@@ -46,14 +46,32 @@
             <h3><?php echo $dados_oficina[1]; ?></h3>
             <h6><?php echo $dados_oficina[2]; ?></h6>
         </header>
+
+        <?php
+
+            try{
+
+              $pdo = new PDO('mysql:host=localhost;dbname=sime', 'root', '');
+              $stmt = $pdo->query("SELECT nome_professor FROM professores WHERE id_professor = $dados_oficina[14]");
+
+              while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                $nome_professor_by_id = $row['nome_professor'];
+              }
+
+            } catch(PDOException $e){
+              echo "Error: ".$e->getMessage();
+            }
+
+        ?>
+
             <aside class='container'>
-                <div style="padding: 1%;"><h7><i class="fa fa-user" aria-hidden="true" style="margin-right: 1%;"></i>Professor: <?php echo $dados_oficina[3]; ?></h7></div>
-                <div style="padding: 1%;"><h7><i class="fa fa-globe" aria-hidden="true" style="margin-right: 1%;"></i>Disciplina: <?php echo $dados_oficina[4]; ?></h7></div>
-                <div style="padding: 1%;"><h7><i class="fa fa-thumb-tack" aria-hidden="true" style="margin-right: 1%;"></i>Sala: <?php echo $dados_oficina[5]; ?></h7></div>
-                <div style="padding: 1%;"><h7><i class="fa fa-users" aria-hidden="true" style="margin-right: 1%;"></i>Vagas: <?php echo $dados_oficina[6]; ?></h7></div>
-                <div style="padding: 1%;"><h7><i class="fa fa-user-times" aria-hidden="true" style="margin-right: 1%;"></i>Requisitos de Série: <?php if($dados_oficina[7] == 1){echo "1º Série";}elseif($dados_oficina[7] == 2){echo "2º Série";}elseif($dados_oficina[7] == 3){echo "3º Série";}else{echo "Aberto";}?></h7></div>
-                <div style="padding: 1%;"><h7><i class="fa fa-calendar-check-o" aria-hidden="true" style="margin-right: 1%;"></i>Data: <?php echo date_format(new DateTime($dados_oficina[8]), "d/m/Y");; ?></h7></div>
-                <div style="padding: 1%;"><h7><i class="fa fa-clock-o" aria-hidden="true" style="margin-right: 1%;"></i>Horário: <?php echo $dados_oficina[9]; ?></h7></div>
+                <div style="padding: 1%;"><h7><i class="fa fa-user" aria-hidden="true" style="margin-right: 1%;"></i>Professor: <?php echo $nome_professor_by_id; ?></h7></div>
+                <div style="padding: 1%;"><h7><i class="fa fa-globe" aria-hidden="true" style="margin-right: 1%;"></i>Disciplina: <?php echo $dados_oficina[3]; ?></h7></div>
+                <div style="padding: 1%;"><h7><i class="fa fa-thumb-tack" aria-hidden="true" style="margin-right: 1%;"></i>Sala: <?php echo $dados_oficina[4]; ?></h7></div>
+                <div style="padding: 1%;"><h7><i class="fa fa-users" aria-hidden="true" style="margin-right: 1%;"></i>Vagas: <?php echo $dados_oficina[5]; ?></h7></div>
+                <div style="padding: 1%;"><h7><i class="fa fa-user-times" aria-hidden="true" style="margin-right: 1%;"></i>Requisitos de Série: <?php if($dados_oficina[6] == 1){echo "1º Série";}elseif($dados_oficina[6] == 2){echo "2º Série";}elseif($dados_oficina[7] == 3){echo "3º Série";}else{echo "Aberto";}?></h7></div>
+                <div style="padding: 1%;"><h7><i class="fa fa-calendar-check-o" aria-hidden="true" style="margin-right: 1%;"></i>Data: <?php echo date_format(new DateTime($dados_oficina[7]), "d/m/Y");; ?></h7></div>
+                <div style="padding: 1%;"><h7><i class="fa fa-clock-o" aria-hidden="true" style="margin-right: 1%;"></i>Horário: <?php echo $dados_oficina[8]; ?></h7></div>
             </aside>
     </main>
 

@@ -83,22 +83,35 @@
 
                   while($dados_oficinas = mysqli_fetch_array($query_sql_dados_oficinas)){
 
+                      try{
+
+                        $pdo = new PDO('mysql:host=localhost;dbname=sime', 'root', '');
+                        $stmt = $pdo->query("SELECT nome_professor FROM professores WHERE id_professor = $dados_oficinas[14]");
+
+                        while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                          $nome_professor_by_id = $row['nome_professor'];
+                        }
+
+                      } catch(PDOException $e){
+                        echo "Error: ".$e->getMessage();
+                      }
+
                       echo "<tr>";
                           echo "<td><a href='../oficinas/oficinas.php?id_oficina=$dados_oficinas[0]'><span>$dados_oficinas[1]</span></a></td>";
+                          echo "<td><span>$nome_professor_by_id</span></td>";
                           echo "<td><span>$dados_oficinas[3]</span></td>";
-                          echo "<td><span>$dados_oficinas[4]</span></td>";
                           echo "<td><a href='inscricoesoficina.php?id_oficina=$dados_oficinas[0]'>";
-                            echo "<span>$dados_oficinas[13]</span>";
+                            echo "<span>$dados_oficinas[12]</span>";
                               echo "/";
-                            echo "<span>$dados_oficinas[6]</span>";
+                            echo "<span>$dados_oficinas[5]</span>";
                           echo "</a></td>";
-                          echo "<td><span>$dados_oficinas[5]</span></td>";
+                          echo "<td><span>$dados_oficinas[4]</span></td>";
                           echo "<td><span>"; 
-                            echo date_format(new DateTime($dados_oficinas[8]), "d/m/Y");;
+                            echo date_format(new DateTime($dados_oficinas[7]), "d/m/Y");;
                           echo "</span></td>";
-                          echo "<td><span>$dados_oficinas[9]</span></td>";
+                          echo "<td><span>$dados_oficinas[8]</span></td>";
                           
-                              if($dados_oficinas[12] == 1){
+                              if($dados_oficinas[11] == 1){
                                   echo "<td><span style='color: green;'>ATIVO</span></td>";
                               } else{
                                   echo "<td><span style='color: red;'>DESATIVADO</span></td>";
@@ -116,7 +129,7 @@
                           echo "</td>";
 
                           echo "<td>";
-                              echo "<a href='$dados_oficinas[14]' target='_blank'><img src='imagens/qrcode.png' width='25px' height='25px'></a>";
+                              echo "<a href='$dados_oficinas[13]' target='_blank'><img src='imagens/qrcode.png' width='25px' height='25px'></a>";
                           echo "</td>";
 
                       echo "</tr>";

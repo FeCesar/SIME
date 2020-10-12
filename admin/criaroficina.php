@@ -51,8 +51,24 @@ include_once('../connection/connect.php');
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputAddress">Professor</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="Nome do Professor" name="professor_oficina" required>
+                <label for="exampleFormControlSelect1">Professor</label>
+                <select class="form-control" id="exampleFormControlSelect1" name='professor_oficina' required>
+                    
+                    <?php
+
+                        try{
+                            $pdo = new PDO('mysql:host=localhost;dbname=sime', 'root', '');
+                            $stmt = $pdo->query("SELECT id_professor, nome_professor FROM professores");
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                                echo "<option value='". $row['id_professor'] . "'>" . $row['nome_professor'] . "</option>";
+                            }
+                        } catch (PDOException $e){
+                            echo "Error: " . $e->getMessage();
+                        }
+
+                    ?>
+
+                </select>
             </div>
             <div class="form-group">
                 <label for="inputAddress2">Disciplina</label>

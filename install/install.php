@@ -9,11 +9,18 @@
         user_admin_pass varchar(255)
     )";
 
+    $sql_criar_tabela_professor = "CREATE TABLE professores(
+        id_professor int AUTO_INCREMENT PRIMARY KEY,
+        nome_professor varchar(255),
+        materia_professor varchar(255),
+        email_professor varchar(255),
+        senha_professor varchar(255)
+    )";
+
     $sql_criar_tabela_oficinas = "CREATE TABLE oficinas(
         id_oficina int PRIMARY KEY AUTO_INCREMENT,
         nome_oficina varchar(255),
         descricao_oficina varchar(255),
-        professor_oficina varchar(255),
         disciplina_oficina varchar(255),
         sala_oficina varchar(255),
         limite_vagas_oficina int,
@@ -24,7 +31,9 @@
         user_criador_oficina varchar(255),
         status_oficina boolean,
         vagas_restantes_oficina int,
-        qr_code varchar(255)
+        qr_code varchar(255),
+        id_professor int,
+            constraint fk_prof_oficina foreign key (id_professor) references professores (id_professor)
     )";
 
     $sql_criar_tabela_alunos = "CREATE TABLE alunos(
@@ -34,14 +43,6 @@
         serie_aluno int(1),
         senha_aluno char(4),
         sala_aluno varchar(255)
-    )";
-
-    $sql_criar_tabela_professor = "CREATE TABLE professores(
-        id_professor int AUTO_INCREMENT PRIMARY KEY,
-        nome_professor varchar(255),
-        materia_professor varchar(255),
-        email_professor varchar(255),
-        senha_professor varchar(255)
     )";
 
 function gerar_senha($tamanho, $maiusculas, $minusculas, $numeros, $simbolos){
@@ -91,11 +92,11 @@ function gerar_senha($tamanho, $maiusculas, $minusculas, $numeros, $simbolos){
     if($query_criar_tabela_user_admin){
         echo("SUCESSO na user_admin!");
         $query_insere_dados_tabela_admin = mysqli_query($conn, $sql_insere_dados_tabela_admin);
+        $query_criar_tabela_professor = mysqli_query($conn, $sql_criar_tabela_professor);
         $query_criar_tabela_oficinas = mysqli_query($conn, $sql_criar_tabela_oficinas);
         $query_criar_tabela_alunos = mysqli_query($conn, $sql_criar_tabela_alunos);
         $query_insere_dados_tabela_aluno = mysqli_query($conn, $sql_insere_dados_tabela_aluno);
         $query_criar_tabela_inscricoes = mysqli_query($conn, $sql_criar_tabela_inscricoes);
-        $query_criar_tabela_professor = mysqli_query($conn, $sql_criar_tabela_professor);
             if($query_criar_tabela_oficinas){
                 echo("SUCESSO na oficinas!");
             } if($query_criar_tabela_alunos){
