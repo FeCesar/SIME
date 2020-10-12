@@ -67,3 +67,16 @@
          margin-left: 0!important;
      }
  }
+/* Oficinas do professor */
+table{
+    border: 1px solid black;
+    width: 100%;
+}
+table tr{
+    border: 1px solid black;
+    text-align: center;
+}
+table tr td{
+    border: 1px solid black;
+    padding: 6px;
+}
