@@ -42,17 +42,56 @@
 
         <?php 
         
-            $nome_professor = $_SESSION['dados'][1];
-            $sql_oficinas_professor = "SELECT * FROM oficinas WHERE professor_oficina = '$nome_professor'";
+            $id_professor = $_SESSION['dados'][0];
+            $sql_oficinas_professor = "SELECT * FROM oficinas WHERE id_professor = '$id_professor'";
             $query_oficinas_professor = mysqli_query($conn, $sql_oficinas_professor);
             $numero_linhas = mysqli_num_rows($query_oficinas_professor);
             
                 if($numero_linhas == null){
                     echo "<h5>Nenhuma Oficina Ativa!</h5>";
                 }
+
+                if($numero_linhas > 0){
+
+                  echo "<table>";
+                      echo "<tr>";
+                        echo "<td>Nome da Oficina</td>";
+                        echo "<td>Vagas</td>";
+                        echo "<td>Sala</td>";
+                        echo "<td>Data</td>";
+                        echo "<td>Horário</td>";
+                        echo "<td>QrCode</td>";
+                      echo "</tr>";
+
+                  while($dados_oficinas = mysqli_fetch_array($query_oficinas_professor)){
+
+                      echo "<tr>";
+                          echo "<td><a href='../oficinas/oficinas.php?id_oficina=$dados_oficinas[0]'><span>$dados_oficinas[1]</span></a></td>";
+
+                          echo "<td><a href='inscricoesoficina.php?id_oficina=$dados_oficinas[0]'>";
+                            echo "<span>$dados_oficinas[12]</span>";
+                              echo "/";
+                            echo "<span>$dados_oficinas[5]</span>";
+                          echo "</a></td>";
+
+                          echo "<td><span>$dados_oficinas[4]</span></td>";
+
+                          echo "<td><span>"; 
+                            echo date_format(new DateTime($dados_oficinas[8]), "d/m/Y");;
+                          echo "</span></td>";
+
+                          echo "<td><span>$dados_oficinas[8]</span></td>";
+                  
+                          echo "<td>";
+                              echo "<a href='$dados_oficinas[13]' target='_blank'><img src='imagens/qrcode.png' width='25px' height='25px'></a>";
+                          echo "</td>";
+
+                      echo "</tr>";
+                  };
+              };
         
         ?>
-
+        </table>
     </main>
 
     <footer class="page-footer font-small blue footer">
