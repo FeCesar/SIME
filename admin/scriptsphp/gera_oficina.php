@@ -14,11 +14,11 @@
     $dados = $_SESSION['dados'];
 
 
-    $sql_insere_oficina = "INSERT INTO oficinas(nome_oficina, descricao_oficina, professor_oficina, 
+    $sql_insere_oficina = "INSERT INTO oficinas(nome_oficina, descricao_oficina,
     disciplina_oficina, sala_oficina, limite_vagas_oficina, requisitos_oficina, dia_oficina, hora_oficina,
-    hora_criacao_oficina, user_criador_oficina, status_oficina, vagas_restantes_oficina) VALUES
-    ('$informacoes_oficina[0]', '$informacoes_oficina[1]','$informacoes_oficina[2]','$informacoes_oficina[3]','$informacoes_oficina[4]',
-    '$informacoes_oficina[5]','$informacoes_oficina[6]','$informacoes_oficina[7]','$informacoes_oficina[8]', '$data', '$dados[1]', true, 0)";
+    hora_criacao_oficina, user_criador_oficina, status_oficina, vagas_restantes_oficina, id_professor) VALUES
+    ('$informacoes_oficina[0]', '$informacoes_oficina[1]', '$informacoes_oficina[3]','$informacoes_oficina[4]',
+    '$informacoes_oficina[5]','$informacoes_oficina[6]','$informacoes_oficina[7]','$informacoes_oficina[8]', '$data', '$dados[1]', true, 0, '$informacoes_oficina[2]')";
     $query_sql_insere_oficina = mysqli_query($conn, $sql_insere_oficina);
 
         if($query_sql_insere_oficina){
