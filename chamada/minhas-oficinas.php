@@ -42,8 +42,8 @@
 
         <?php 
         
-            $nome_professor = $_SESSION['dados'][1];
-            $sql_oficinas_professor = "SELECT * FROM oficinas WHERE professor_oficina = '$nome_professor'";
+            $id_professor = $_SESSION['dados'][0];
+            $sql_oficinas_professor = "SELECT * FROM oficinas WHERE id_professor = '$id_professor'";
             $query_oficinas_professor = mysqli_query($conn, $sql_oficinas_professor);
             $numero_linhas = mysqli_num_rows($query_oficinas_professor);
             
