@@ -96,20 +96,14 @@
                             echo "</td>";
                             echo "<td>$dados_alunos[0]</td>";
 
-                        echo "<td>";
-                        echo "<form action='scriptsphp/cancelar_inscricao.php' method='post' style='display: inline-block;'>";
-                            echo "<input type='number' style='display: none;' name='id' value='$dados_alunos[0]'>";
-                            echo "<input type='number' style='display: none;' name='oficina' value='$id_oficina'>";
-                            echo "<input type='submit' value='' class='btn-funcao btn-funcao-lixeira'>";
-                        echo "</form>";
-                        echo "</td>";
+                        echo "<td> chekBox </td>";
                         echo "</tr>";
                     }
 
                     echo "<h6 style='float: right;  '>";
                         echo $contador;
                         echo "/";
-                        echo $dados_oficina[6];
+                        echo $dados_oficina[5];
                     echo "</h6>";
 
                     $vagas_restantes = $contador;
