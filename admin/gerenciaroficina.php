@@ -81,8 +81,6 @@
                         echo "<td>QrCode</td>";
                       echo "</tr>";
 
-                  while($dados_oficinas = mysqli_fetch_array($query_sql_dados_oficinas)){
-
                       try{
 
                         $pdo = new PDO('mysql:host=localhost;dbname=sime', 'root', '');
@@ -134,7 +132,6 @@
 
                       echo "</tr>";
                   };
-              };
           
             ?>
 
