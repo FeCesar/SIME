@@ -62,6 +62,7 @@
                 $sql_dados_oficinas = "SELECT * FROM oficinas";
                 $query_sql_dados_oficinas = mysqli_query($conn, $sql_dados_oficinas);
                 $num_rows_query_sql_dados_oficinas = mysqli_num_rows($query_sql_dados_oficinas);
+                $dados_oficinas = mysqli_fetch_array($query_sql_dados_oficinas);
       
                 if($num_rows_query_sql_dados_oficinas < 1){
                     echo "<h5 style='padding: 1%; margin: 0;'>Sem Oficinas no Momento! <a href='criaroficina.php'><span>Que tal Criar Uma?</span></a></h5>";
