@@ -42,6 +42,7 @@
         idade_aluno int(2),
         serie_aluno int(1),
         senha_aluno char(4),
+        email_aluno varchar(255),
         sala_aluno varchar(255)
     )";
 
@@ -86,7 +87,7 @@ function gerar_senha($tamanho, $maiusculas, $minusculas, $numeros, $simbolos){
     $sql_insere_dados_tabela_admin = "INSERT into user_admin(user_admin_nome, user_admin_email, user_admin_pass) VALUES
     ('Admin', 'admin@admin.com', 'admin')";
     $senha_aluno = gerar_senha(4, true, true, true, true);
-    $sql_insere_dados_tabela_aluno = "INSERT INTO alunos VALUES('11111', 'Felipe Cesar', 17, '3', '$senha_aluno', '3ºB')";
+    $sql_insere_dados_tabela_aluno = "INSERT INTO alunos VALUES('11111', 'Felipe Cesar', 17, '3', '$senha_aluno', '3ºB', 'ff.cc.ss.rr@hotmail.com')";
     $query_criar_tabela_user_admin = mysqli_query($conn, $sql_criar_tabela_user_admin);
 
     if($query_criar_tabela_user_admin){
