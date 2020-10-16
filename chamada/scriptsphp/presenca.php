@@ -14,7 +14,7 @@
 
             while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                 
-                echo "Envia Certificado para O email: " . $row['email_aluno'];
+                
 
             }
 
