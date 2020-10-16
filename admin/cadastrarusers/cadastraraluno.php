@@ -65,6 +65,10 @@
                 <input type="text" class="form-control" id="inputEmail4" placeholder="Ex.: Felipe Cesar" required name="nome">
             </div>
             <div class="form-group col-md-6">
+                <label for="inputEmail4">Email Aluno</label>
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Ex.: Aluno@gmail.com" required name="email">
+            </div>
+            <div class="form-group col-md-6">
                 <label for="inputPassword4">Registro de Mátricula</label>
                 <input type="text" class="form-control" id="inputPassword4" placeholder="RM" maxlength="5" minlength="5" required name="rm">
             </div>

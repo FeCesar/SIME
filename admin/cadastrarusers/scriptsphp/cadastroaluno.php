@@ -9,8 +9,9 @@
     $sala_usuario = $_POST['sala'];
     $serie_aluno = $_POST['serie'];
     $idade_aluno = $_POST['idade'];
+    $email_aluno = $_POST['email'];
 
-        if(empty($nome_aluno) || empty($rm_aluno) || empty($sala_usuario) || empty($serie_aluno) || empty($idade_aluno)){
+        if(empty($nome_aluno) || empty($email_aluno) || empty($rm_aluno) || empty($sala_usuario) || empty($serie_aluno) || empty($idade_aluno)){
             $_SESSION['error_preencha_campo'] = true;
             header('location: ../cadastraraluno.php');
         } elseif(strlen($rm_aluno) < 5){
@@ -49,7 +50,7 @@
               }
 
             $senha_aluno = gerar_senha(4, true, true, true, true);
-            $sql_insere_aluno = "INSERT INTO alunos(rm_aluno, nome_aluno, idade_aluno, serie_aluno, senha_aluno, sala_aluno) VALUES('$rm_aluno', '$nome_aluno', '$idade_aluno', '$serie_aluno', '$senha_aluno', '$sala_usuario')";
+            $sql_insere_aluno = "INSERT INTO alunos(rm_aluno, nome_aluno, idade_aluno, serie_aluno, senha_aluno, sala_aluno, email_aluno) VALUES('$rm_aluno', '$nome_aluno', '$idade_aluno', '$serie_aluno', '$senha_aluno', '$sala_usuario', '$email_aluno')";
             $query_insere_aluno = mysqli_query($conn, $sql_insere_aluno);
                 
             if($query_insere_aluno){
