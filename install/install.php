@@ -42,8 +42,8 @@
         idade_aluno int(2),
         serie_aluno int(1),
         senha_aluno char(4),
-        email_aluno varchar(255),
-        sala_aluno varchar(255)
+        sala_aluno varchar(255),
+        email_aluno varchar(255)
     )";
 
 function gerar_senha($tamanho, $maiusculas, $minusculas, $numeros, $simbolos){

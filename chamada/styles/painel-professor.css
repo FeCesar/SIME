@@ -80,3 +80,19 @@ table tr td{
     border: 1px solid black;
     padding: 6px;
 }
+.formulario{
+    height: 400px;
+}
+.btn-fazer-chamada{
+    float: right; 
+}
+.btn-fazer-chamada button{
+    border: none;     
+    background-color: #343a40;
+    color: rgba(255, 255, 255, 0.3);
+    transition: 0.3s;
+}
+.btn-fazer-chamada button:hover{
+    transition: 0.3s;
+    color: rgba(255, 255, 255, 0.7);
+}
