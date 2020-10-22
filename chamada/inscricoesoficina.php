@@ -66,7 +66,6 @@
                 <td>Sala</td>
                 <td>Série</td>
                 <td>Rm</td>
-                <td>Funções</td>
             </tr>
 
             <?php 
@@ -97,7 +96,6 @@
                             echo "</td>";
                             echo "<td>$dados_alunos[0]</td>";
 
-                        echo "<td> chekBox </td>";
                         echo "</tr>";
                     }
 
