@@ -163,6 +163,7 @@
                             
                             echo "<div class='modal-footer' style='border: none; margin-bottom: 1%;'>";
                             echo "<button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar</button>";
+                            echo "<input type='text' name='id_oficina' value='$id_oficina' style='display: none;'>";
                             echo "<input type='submit' class='btn btn-primary' value='Confirmar'>";
                             echo "</div>";
                             echo "</form>";
