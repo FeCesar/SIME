@@ -41,9 +41,6 @@
         <a href="minhas-oficinas.php"><div class="box" name="no_margin_left">
             <h3 class="font-weight-light">Minhas Oficinas</h3>
         </div></a>
-        <a href="historico-oficinas.php"><div class="box">
-            <h3 class="font-weight-light">Histórico de Oficinas</h3>
-        </div></a>
     </main>
 
     <footer class="page-footer font-small blue footer">
