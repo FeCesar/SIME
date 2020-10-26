@@ -123,7 +123,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Lista de Chamada</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -161,9 +161,10 @@
 
                             }
                             
-                            echo "<div class='modal-footer'>";
-                            echo "<button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>";
-                            echo "<input type='submit' class='btn btn-primary' value='Enviar Presença'>";
+                            echo "<div class='modal-footer' style='border: none; margin-bottom: 1%;'>";
+                            echo "<button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar</button>";
+                            echo "<input type='text' name='id_oficina' value='$id_oficina' style='display: none;'>";
+                            echo "<input type='submit' class='btn btn-primary' value='Confirmar'>";
                             echo "</div>";
                             echo "</form>";
                             echo "</table>";

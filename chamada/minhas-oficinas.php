@@ -60,6 +60,7 @@
                         echo "<td>Sala</td>";
                         echo "<td>Data</td>";
                         echo "<td>Horário</td>";
+                        echo "<td>Status</td>";
                         echo "<td>QrCode</td>";
                       echo "</tr>";
 
@@ -81,6 +82,12 @@
                           echo "</span></td>";
 
                           echo "<td><span>$dados_oficinas[8]</span></td>";
+
+                          if($dados_oficinas[11] == 1){
+                            echo "<td><span style='color: green;'>ATIVO</span></td>";
+                          } else{
+                            echo "<td><span style='color: red;'>DESATIVADO</span></td>";
+                          }
                   
                           echo "<td>";
                               echo "<a href='$dados_oficinas[13]' target='_blank'><img src='imagens/qrcode.png' width='25px' height='25px'></a>";
