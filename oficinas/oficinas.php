@@ -110,7 +110,7 @@
 
         <?php if(isset($_SESSION['sucess_cadastro'])): ?>
           <div class="alert alert-success container-fluid" style="font-size: 12px; display: inline-block;" role="alert">
-            <p class='container' style='padding: 0; margin-bottom:0'>Sucesso! Você se Cadastrou na Oficina do Professor <?php echo $dados_oficina[3]; ?>.</p>
+            <p class='container' style='padding: 0; margin-bottom:0'>Sucesso! Você se Cadastrou na Oficina!</p>
           </div>
         <?php endif; unset($_SESSION['sucess_cadastro']); ?>
 
