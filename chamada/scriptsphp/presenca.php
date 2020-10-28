@@ -74,10 +74,10 @@
                     
                 <footer>
                     <div class="box" style="margin-right: 5%;">
-                        <h5>Professor <?php echo $dados_professor[1]?></h5>
+                        <h6>Professor <?php echo $dados_professor[1]?></h6>
                     </div>
                     <div class="box" style="margin-left: 5%;">
-                        <h5>Diretor Pedagógico Daniel Paulo Ferreira</h5>
+                        <h6>Diretor Pedagógico Daniel Paulo Ferreira</h6>
                     </div>
                 </footer>
 
