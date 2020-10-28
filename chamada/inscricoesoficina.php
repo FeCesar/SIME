@@ -88,7 +88,7 @@
                             echo "<td>";
                                 if($dados_alunos[3] == 1){
                                     echo "1º Série";
-                                } elseif($dados_alunos[3] == 2){
+                                } elseif($dados_alunos[3] == 2  ){
                                     echo "2º Série";
                                 } else{
                                     echo "3º Série";
