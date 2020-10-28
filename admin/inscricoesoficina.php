@@ -109,7 +109,7 @@
                     echo "<h6 style='float: right;  '>";
                         echo $contador;
                         echo "/";
-                        echo $dados_oficina[5];
+                        echo $dados_oficina[6];
                     echo "</h6>";
 
                     $vagas_restantes = $contador;

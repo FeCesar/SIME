@@ -40,7 +40,7 @@
 
     <main class="container main">
         <a href="cadastrarusers/cadastraradmin.php"><div class="box" name="no_margin_left">
-            <h3 class="font-weight-light">Adminstrador</h3>
+            <h3 class="font-weight-light">Administrador</h3>
         </div></a>
         <a href="cadastrarusers/cadastraraluno.php"><div class="box">
             <h3 class="font-weight-light">Aluno</h3>
