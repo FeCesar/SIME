@@ -1,0 +1,35 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-image: radial-gradient(#fff, #eee);
+}
+header{
+    text-align: center;
+    padding: 2%;
+}
+header figure img{
+    width: 400px;
+}
+aside{
+    text-align: center;
+}
+aside p{
+    font-size: 18px;
+}
+.texto{
+    margin-top: 2%;
+    margin-left: 30%;
+    width: 40%;
+    text-align:center;
+}
+footer{
+    text-align: center;
+    margin-top: 10%;
+}
+.box{
+    display: inline-block;
+    width: 30%;
+    border-top: 1px solid black;
+}

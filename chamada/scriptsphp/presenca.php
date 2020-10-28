@@ -7,6 +7,14 @@
     $rm_alunos = $_POST['presencas'];
     $id_oficina = $_POST['id_oficina'];
 
+    $query = "SELECT * FROM oficinas WHERE id_oficina = $id_oficina";
+    $query_ativa = mysqli_query($conn, $query);
+    $dados_oficina = mysqli_fetch_array($query_ativa);
+
+    $query_prof = "SELECT * FROM professores WHERE id_professor = $dados_oficina[14]";
+    $query_ativa_prof = mysqli_query($conn, $query_prof);
+    $dados_professor = mysqli_fetch_array($query_ativa_prof);
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -18,82 +26,74 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles/painel-professor.css">
+    <link rel="stylesheet" href="certificado.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script type="text/javascript">
+      function imprimir(){
+
+        element = document.getElementById("btn");
+        element2 = document.getElementById("btnVoltar");
+        element.style.display="none";
+        element2.style.display="none";
+
+         window.print();
+
+        element.style.display = "inline-block";
+        element2.style.display = "inline-block";
+       }
+     </script>
   </head>
   <body>
 
-  <style>
-    .log{
-        height: 400px;
-    }
-    table{
-        width: 100%;
-        margin-top: 2%;
-    }
-    tr{
-        border: 1px solid rgba(0, 0, 0, 0.5);
-        margin-bottom: 2px;
-    }
-    td{
-        padding: 1.5%;
-    }
-    span{
-        padding: 0.5%;
-        border-radius: 3px;
-    }
-    button{
-        float: right;
-    }
+        <?php
 
-  </style>
+            try{
 
-    <header class="navbar-dark bg-dark">
-      <nav class="navbar container">
-        <a class="navbar-brand">
-          <img src="../../imagens/logo.png" width="35" height="35" class="d-inline-block align-top" alt="" loading="lazy"><span style="font-size: 12px; opacity: 0.6; margin-left: 5%; color: white;"> | Sistema de Inscrição Médio Escolar</span>
-        </a>
-        <a class="navbar-brand" href="logout.php"><span style="font-size: 13px;">Logout<i class="fa fa-sign-out" aria-hidden="true" style="margin-left: 10%;"></i></span></a>
-      </nav>
-    </header> 
+                $pdo = new PDO('mysql:host=localhost;dbname=sime', 'root', '');
+                $stmt = $pdo->query("SELECT * FROM alunos WHERE rm_aluno = $rm_alunos[0]");
 
-    <main class="container log">
-        <table>
-            <?php
+                while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)):
+        ?>
 
-                foreach ($rm_alunos as $value){
-                        
-                    try{
-                        $pdo = new PDO("mysql:host=localhost;dbname=sime", 'root', '');
-                        $stmt = $pdo->query("SELECT email_aluno FROM alunos WHERE rm_aluno = $value");
+                <main>
 
-                        while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                <header>
+                    <figure><img src="../imagens/logo.png"></figure> 
+                </header>
 
-                            $email_aluno = $row['email_aluno'];
-                            
-                                echo "<tr>";
-                                    echo "<td>Certificado <span class='alert-success'>Enviado</span> Para <span class='alert-success'>$email_aluno</span></td>";
-                                echo "</tr>";
+                <aside>
+                    <h1>CERTIFICADO</h1>
+                </aside>
 
-                        }
+                <aside>
+                    <p>Etec Pedro D'Arcádia Neto certifica que</p>
+                    <h3><?php echo $row['nome_aluno']; ?></h3>
+                    <p style="width: 40%; margin-left: 30%;">Participou da oficina organizada por <?php echo $dados_professor[1]; ?>, Realizada na escola Pedro D'Arcádia Neto no dia <?php echo date_format(new DateTime($dados_oficina[7]), "d/m/Y");; ?>, com carga horária de 1 hora e 40 minutos (Uma hora e quarenta minutos).</p>
+                </aside>
+                    
+                <footer>
+                    <div class="box" style="margin-right: 5%;">
+                        <h5>Professor <?php echo $dados_professor[1]?></h5>
+                    </div>
+                    <div class="box" style="margin-left: 5%;">
+                        <h5>Diretor Pedagógico Daniel Paulo Ferreira</h5>
+                    </div>
+                </footer>
 
+                </main>
 
-                    } catch(PDOException $e){
-                        echo "Error: " . $e->getMessage();
-                    }
+        <?php
+            
+                endwhile;
+            } catch(PDOException $e){
+                echo "Error: " . $e->getMessage();
+            }
 
-                }
+        ?>
 
-            ?>
-        </table>
-    </main>
-
-    <aside class="container">
-        <form action="desativa_oficina.php" method="post">
-            <input type="text" name="id" value="<?php echo $id_oficina ?>" style="display: none;">
-            <input class="btn btn-primary" type="submit" value="Voltar" style="float: right;">
-        </form>
-    </aside>
+        <button type="button" class="btn btn-secondary" style="margin: 5%; margin-bottom: 0;" onClick="imprimir()" id="btn">Imprimir</button>
+        <a href="../index.php"><button type="button" class="btn btn-secondary" style="display: none; margin: 5%; margin-bottom: 0;" id="btnVoltar">Voltar</button></a>
 
 </body>
 </html>
